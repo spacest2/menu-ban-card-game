@@ -187,6 +187,8 @@ input {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  width: 100%;
+  min-width: 0;
 }
 
 .table-board-stack {
@@ -253,6 +255,15 @@ input {
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
 }
 
+.action-chip,
+.target-pill,
+.restaurant-card,
+.card-topline,
+.card-title-block,
+.card-footer {
+  min-width: 0;
+}
+
 .battle-card {
   isolation: isolate;
 }
@@ -290,6 +301,7 @@ input {
 .card-title-block strong {
   font-size: 1.05rem;
   line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .reveal-pick-card {
@@ -330,6 +342,10 @@ input {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.78rem;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hp-badge {
@@ -849,11 +865,6 @@ input {
 }
 
 @media (max-width: 640px) {
-  .card-grid,
-  .compact-grid {
-    grid-template-columns: 1fr;
-  }
-
   .section-heading,
   .stepper-row,
   .player-row,
@@ -864,5 +875,106 @@ input {
 
   .button-row > * {
     width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-shell {
+    padding: 14px 10px 28px;
+  }
+
+  .panel,
+  .hero-card {
+    border-radius: 18px;
+  }
+
+  .panel {
+    padding: 14px;
+  }
+
+  .card-grid {
+    gap: 8px;
+  }
+
+  /* mobile: battlefield cards = 3 columns */
+  .battlefield-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* mobile: dead cards = 3 columns */
+  .dead-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* mobile: action cards = 4 columns */
+  .action-cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .action-targets {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .restaurant-card,
+  .action-chip,
+  .target-pill {
+    border-radius: 12px;
+  }
+
+  .restaurant-card {
+    min-height: 118px;
+    padding: 10px 8px;
+    gap: 4px;
+  }
+
+  .action-chip,
+  .target-pill {
+    padding: 10px 8px;
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .card-topline,
+  .card-footer {
+    gap: 6px;
+  }
+
+  .card-title-block {
+    gap: 4px;
+  }
+
+  .card-title-block strong {
+    font-size: 0.82rem;
+    line-height: 1.2;
+  }
+
+  .card-title-block span,
+  .card-mini-stat {
+    font-size: 0.68rem;
+    line-height: 1.15;
+  }
+
+  .owner-badge,
+  .hp-badge {
+    padding: 4px 6px;
+    font-size: 0.62rem;
+  }
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.04);
+  }
+
+  .selection-badge {
+    top: 8px;
+    right: 8px;
+    padding: 4px 7px;
+    font-size: 0.62rem;
+  }
+
+  .battlefield-panel::before {
+    inset: -6px;
+    border-radius: 22px;
   }
 }

@@ -321,7 +321,7 @@ export function TableBoard(props: {
           </div>
           <strong>{visibleTableCards.length}장</strong>
         </div>
-        <div className="card-grid">
+        <div className="card-grid battlefield-cards">
           {visibleTableCards.map((card) => (
             <RestaurantBattleCard
               key={card.cardId}
@@ -356,7 +356,7 @@ export function TableBoard(props: {
           </div>
           <strong>{props.graveyardCards.length}장</strong>
         </div>
-        <div className="card-grid">
+        <div className="card-grid dead-cards">
           {props.graveyardCards.map((card) => (
             <RestaurantBattleCard
               key={card.cardId}

@@ -31,7 +31,7 @@ export function ActionHand(props: {
         <strong>{availableCards.length}장 남음</strong>
       </div>
 
-      <div className="card-grid compact-grid">
+      <div className="card-grid compact-grid action-cards">
         {availableCards.map((card) => (
           <button
             key={card.actionId}
@@ -53,7 +53,7 @@ export function ActionHand(props: {
           <p className="helper-text">
             대상 선택: {selectedAction.type === "revive" ? "죽은 카드" : "살아 있는 공개 카드"}
           </p>
-          <div className="card-grid compact-grid">
+          <div className="card-grid compact-grid action-targets">
             {candidateTargets.map((card) => (
               <button
                 key={card.cardId}
