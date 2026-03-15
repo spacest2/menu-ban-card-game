@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    match /rooms/{roomId} {
+      allow read: if isSignedIn();
+      allow create, update: if isSignedIn();
+
+      match /players/{playerId} {
+        allow read: if isSignedIn();
+        allow create, update: if isSignedIn();
+      }
+
+      match /privatePlayers/{playerId} {
+        allow read, create, update: if isSignedIn() && request.auth.uid == playerId;
+      }
+
+      match /logs/{logId} {
+        allow read, create: if isSignedIn();
+      }
+    }
+  }
+}
